@@ -3,31 +3,16 @@ const studentModel = {
 
     getAllStudents: (callback) => 
     {
-        db.query('SELECT * FROM students', (err, results) => {
-            if (err) {
-                return callback(err);
-            }
-            return callback(results);
-        });
+        db.query('SELECT * FROM students', callback);
     },
 
     getStudentById: (id, callback) => 
     {
-        db.query('SELECT * FROM students WHERE id = ?', [id], (err, results) => {
-            if (err) {
-                return callback(err);
-            }
-            return callback(results[0]);
-        });
+        db.query('SELECT * FROM students WHERE id = ?', [id],callback );
     },
     createStudent: (student, callback) => 
     {
-        db.query('INSERT INTO students SET ?', student, (err, results) => {
-            if (err) {
-                return callback(err);
-            }
-            return callback(results.insertId);
-        });
+        db.query('INSERT INTO students SET ?', student, callback);
     },
 
 };
