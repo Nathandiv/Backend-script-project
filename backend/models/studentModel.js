@@ -18,5 +18,6 @@ const studentModel = {
     {
         db.query('UPDATE students SET ? WHERE id = ?', [student, id], callback);
     },
+    
 
 };
