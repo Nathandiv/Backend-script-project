@@ -18,6 +18,10 @@ const studentModel = {
     {
         db.query('UPDATE students SET ? WHERE id = ?', [student, id], callback);
     },
-    
+
+    deleteStudent: (id, callback) => 
+    {
+        db.query('DELETE FROM students WHERE id = ?', [id], callback);
+    }
 
 };
