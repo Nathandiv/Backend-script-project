@@ -26,7 +26,18 @@ const studentController = {
         });
     },
 
+    createStudent: (req, res) => {
+        const newStudent = req.body;
+        studentModel.createStudent(newStudent, (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error creating student' });
+            }
+            res.status(201).json({ id: results.insertId, ...newStudent });
+        });
+    },
     
+
+
 
     
 
