@@ -24,7 +24,9 @@ const studentController = {
             }
             res.json(results[0]);
         });
-    }
+    },
+
+    
 
     
 
