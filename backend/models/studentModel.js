@@ -22,6 +22,19 @@ const studentModel = {
     deleteStudent: (id, callback) => 
     {
         db.query('DELETE FROM students WHERE id = ?', [id], callback);
-    }
+    },
+    getStudentByEmail: (email, callback) => 
+    {
+        db.query('SELECT * FROM students WHERE email = ?', [email], callback);
+    },
+  
+    getStudentByName: (name, callback) => 
+    {
+        db.query('SELECT * FROM students WHERE name = ?', [name], callback);
+    },
+    getStudentByPhone: (phone, callback) => 
+    {
+        db.query('SELECT * FROM students WHERE phone = ?', [phone], callback);
+    },
 
 };
