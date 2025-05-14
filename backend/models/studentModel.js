@@ -14,5 +14,9 @@ const studentModel = {
     {
         db.query('INSERT INTO students SET ?', student, callback);
     },
+    updateStudent: (id, student, callback) => 
+    {
+        db.query('UPDATE students SET ? WHERE id = ?', [student, id], callback);
+    },
 
 };
