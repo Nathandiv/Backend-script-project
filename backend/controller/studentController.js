@@ -35,7 +35,20 @@ const studentController = {
             res.status(201).json({ id: results.insertId, ...newStudent });
         });
     },
-    
+
+    updateStudent: (req, res) => {
+        const studentId = req.params.id;
+        const updatedStudent = req.body;
+        studentModel.updateStudent(studentId, updatedStudent, (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error updating student' });
+            }
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ error: 'Student not found' });
+            }
+            res.json({ id: studentId, ...updatedStudent });
+        });
+    },
 
 
 
