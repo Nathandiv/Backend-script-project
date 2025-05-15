@@ -50,6 +50,31 @@ const studentController = {
         });
     },
 
+    exportDeleteStudent: (req, res) => {
+        const studentId = req.params.id;
+        studentModel.deleteStudent(studentId, (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error deleting student' });
+            }
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ error: 'Student not found' });
+            }
+            res.status(204).send();
+        });
+    },
+    exportStudentByEmail: (req, res) => {
+        const email = req.params.email;
+        studentModel.getStudentByEmail(email, (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error fetching student' });
+            }
+            if (results.length === 0) {
+                return res.status(404).json({ error: 'Student not found' });
+            }
+            res.json(results[0]);
+        });
+    },
+
 
 
     
