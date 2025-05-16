@@ -3,10 +3,10 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');  
 const studentRoutes = require('./router/studentRoutes');
 const logger = require('./middlewares/logger');
+const app = express();
 
 
 app.use(bodyParser.json());
-const app = express();
 dotenv.config();
 app.use ('/api/Student', studentRoutes);
 app.use(logger);
